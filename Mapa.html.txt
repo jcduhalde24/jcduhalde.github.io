@@ -1,0 +1,21 @@
+// Carga el mapa de Latinoamérica
+d3.xml("latam.svg").then(function(xml) {
+  d3.select("#map").node().append(xml.documentElement);
+  
+  // Agrega eventos onclick a cada país
+  d3.selectAll(".country").on("click", function() {
+    // Obtiene el nombre del país
+    var countryName = d3.select(this).attr("title");
+    
+    // Obtiene la información del país desde el archivo JSON
+    d3.json("countries.json").then(function(countries) {
+      var countryInfo = countries[countryName];
+      
+      // Muestra la información en un cuadro de diálogo
+      alert("Capital: " + countryInfo.capital + "\n" + 
+            "Población: " + countryInfo.population + "\n" +
+            "Idioma oficial: " + countryInfo.language + "\n" +
+            "Moneda: " + countryInfo.currency);
+    });
+  });
+});
