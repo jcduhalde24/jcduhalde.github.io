@@ -1,5 +1,5 @@
 // Carga el mapa de Latinoamérica
-d3.xml("latam.png.svg").then(function(xml) {
+d3.xml("latam.svg.png").then(function(xml) {
   d3.select("#map").node().append(xml.documentElement);
   
   // Agrega eventos onclick a cada país
